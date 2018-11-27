@@ -1,6 +1,5 @@
-node_modules
-dist
-.vscode
-package-lock.json
-**psd
-
+node_modules/*
+.DS_STORE
+.DS_Store
+.DS_Store?
+dist/*
