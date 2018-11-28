@@ -1,4 +1,6 @@
-import hello from './js/hello';
+import './js/vendor/js.cookie.js';
+import './js/custom/main.js';
+
 import './scss/style.scss';
-console.log('works!');
-hello('Iza');
+
+
