@@ -1,5 +1,6 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = (env, options) => {
     //check if production
@@ -96,6 +97,9 @@ module.exports = (env, options) => {
     
         plugins: [
             new ExtractTextPlugin("style.css"),
+            new HtmlWebpackPlugin({
+                template: './src/index.html'
+             })
           ]
     };
 }
