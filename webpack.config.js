@@ -43,7 +43,8 @@ module.exports = (env, options) => {
                         fallback: {
                             loader: 'style-loader',
                             options: { sourceMap: isProd ? false : true }
-                        }
+                        },
+                        publicPath: '../'
                     })
                 },
                 {
@@ -53,7 +54,43 @@ module.exports = (env, options) => {
                     use: {
                         loader: 'babel-loader'
                     }
-                }
+                },
+                {
+                    test: /\.(gif|png|jpe?g|svg)$/,
+                    exclude: /fonts?/,
+                    use: [
+                       {
+                          loader: 'file-loader',
+                          options: {
+                             name: '[name].[ext]',
+                             outputPath: 'img/'
+                          }
+                       },
+                       {
+                          loader: 'image-webpack-loader',
+                          options: {
+                             disable: isProd ? false : true
+                          }
+                       }
+                    ]
+                 },
+                 {
+                    test: /\.(eot|svg|ttf|woff|woff2)$/,
+                    exclude: /(images?|img)/,
+                    use: {
+                       loader: 'file-loader',
+                       options: {
+                          name: '[name].[ext]',
+                          outputPath: 'fonts/'
+                       }
+                    }
+                 },
+                 {
+                    test: /\.(html)$/,
+                    use: {
+                       loader: 'html-loader'
+                    }
+                 }
             ]
         },
     
